@@ -1,16 +1,15 @@
 :root {
-  --primary: #3b82f6;
-  --primary-dark: #1d4ed8;
-  --bg: #f1f5f9;
-  --sidebar: #0f172a;
-  --card: #ffffff;
-  --text: #1e293b;
-  --muted: #64748b;
-  --red: #ef4444;
-  --green: #10b981;
-  --yellow: #f59e0b;
+  --primary: #8b5cf6;       /* Vibrant Purple */
+  --primary-dark: #6d28d9;  /* Darker Purple */
+  --bg: #0f172a;            /* Dark Background */
+  --sidebar: #1e1b4b;       /* Deep Navy Sidebar */
+  --card: #1e293b;          /* Dark Grey/Blue Cards */
+  --text: #f8fafc;          /* Light White Text */
+  --muted: #94a3b8;         /* Soft Gray Text */
+  --red: #ef4444;           /* Alert Red */
+  --green: #10b981;         /* Success Green */
+  --yellow: #f59e0b;        /* Warning Amber */
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
 body { background: var(--bg); color: var(--text); height: 100vh; display: flex; overflow: hidden; }
 
