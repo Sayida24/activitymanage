@@ -291,6 +291,41 @@ const ui = {
   closeModal() {
     document.getElementById('activity-modal').style.display = 'none';
   },
+  init() {
+    this.requestNotificationPermission();
+    setInterval(() => this.checkReminders(), 30000); // Check notifications every 30s
+    
+    // START LIVE CLOCK
+    this.startClock();
+
+    ui.render();
+  },
+
+  // ADD THIS FUNCTION
+  startClock() {
+    const update = () => {
+      const now = new Date();
+      const timeElem = document.getElementById('live-time');
+      const dateElem = document.getElementById('live-date');
+
+      if (timeElem && dateElem) {
+        timeElem.textContent = now.toLocaleTimeString([], { 
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit' 
+        });
+        dateElem.textContent = now.toLocaleDateString([], { 
+          weekday: 'short', 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric' 
+        });
+      }
+    };
+    
+    update(); // Run immediately on load
+    setInterval(update, 1000); // Update every second
+  },
 
   handleFormSubmit(e) {
     e.preventDefault();
@@ -315,6 +350,7 @@ const ui = {
     this.closeModal();
   }
 };
+
 
 // Start application
 window.addEventListener('DOMContentLoaded', () => app.init());
