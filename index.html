@@ -11,6 +11,19 @@
   <div class="app-container">
     <aside class="sidebar">
       <h2>Activity Hub</h2>
+
+      <!-- Live Date and Time Display -->
+      <div class="datetime-container">
+        <div id="live-time" class="live-time">--:--:--</div>
+        <div id="live-date" class="live-date">Loading...</div>
+      </div>
+
+      <!-- Theme Toggle Button -->
+      <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="themeManager.toggle()">
+        <span class="material-icons" id="theme-icon">light_mode</span>
+        <span id="theme-text">Light Mode</span>
+      </button>
+
       <nav>
         <button id="nav-dash" class="nav-btn active" onclick="ui.showDashboard()">
           <span class="material-icons">dashboard</span> Dashboard
@@ -19,6 +32,7 @@
           <span class="material-icons">history</span> History
         </button>
       </nav>
+
       <button class="add-btn" onclick="ui.openModal()">
         <span class="material-icons">add</span> Add Activity
       </button>
@@ -99,21 +113,7 @@
       </form>
     </div>
   </div>
-<aside class="sidebar">
-  <h2>Activity Hub</h2>
-  
-  <!-- ADD THIS BLOCK -->
-  <div class="datetime-container">
-    <div id="live-time" class="live-time">--:--:--</div>
-    <div id="live-date" class="live-date">Loading...</div>
-  </div>
-  <!-- END OF ADDED BLOCK -->
 
-  <nav>
-    <button id="nav-dash" class="nav-btn active" onclick="ui.showDashboard()">
-      <span class="material-icons">dashboard</span> Dashboard
-    </button>
-...
   <script src="script.js"></script>
 </body>
 </html>

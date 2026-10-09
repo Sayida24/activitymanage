@@ -3,7 +3,33 @@ const store = {
   get: () => JSON.parse(localStorage.getItem('app_activities')) || [],
   set: (data) => localStorage.setItem('app_activities', JSON.stringify(data))
 };
+// --- THEME MANAGER ---
+const themeManager = {
+  init() {
+    const savedTheme = localStorage.getItem('app_theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+    }
+    this.updateUI();
+  },
 
+  toggle() {
+    document.body.classList.toggle('light-theme');
+    const isLight = document.body.classList.contains('light-theme');
+    localStorage.setItem('app_theme', isLight ? 'light' : 'dark');
+    this.updateUI();
+  },
+
+  updateUI() {
+    const isLight = document.body.classList.contains('light-theme');
+    const icon = document.getElementById('theme-icon');
+    const text = document.getElementById('theme-text');
+    if (icon && text) {
+      icon.textContent = isLight ? 'dark_mode' : 'light_mode';
+      text.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+    }
+  }
+};
 // --- CORE APP LOGIC ---
 const app = {
   activities: store.get(),
@@ -287,6 +313,7 @@ const ui = {
 
     modal.style.display = 'flex';
   },
+  
 
   closeModal() {
     document.getElementById('activity-modal').style.display = 'none';
@@ -353,4 +380,7 @@ const ui = {
 
 
 // Start application
-window.addEventListener('DOMContentLoaded', () => app.init());
+window.addEventListener('DOMContentLoaded', () => {
+  themeManager.init();
+  app.init();
+});
